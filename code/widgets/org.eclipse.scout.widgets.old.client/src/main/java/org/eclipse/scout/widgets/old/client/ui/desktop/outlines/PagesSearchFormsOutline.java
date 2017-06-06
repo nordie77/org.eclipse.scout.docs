@@ -27,7 +27,7 @@ public class PagesSearchFormsOutline extends AbstractOutline {
 
   @Override
   protected String getConfiguredTitle() {
-    return TEXTS.get("PagesSearchForms");
+    return TEXTS.get("PagesSearchFormsOld");
   }
 
   @Override
