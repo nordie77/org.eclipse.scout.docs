@@ -6,6 +6,7 @@ import org.eclipse.scout.rt.client.ui.desktop.bench.layout.FlexboxLayoutData;
 import org.eclipse.scout.rt.client.ui.form.AbstractForm;
 import org.eclipse.scout.rt.client.ui.form.fields.bigdecimalfield.AbstractBigDecimalField;
 import org.eclipse.scout.rt.client.ui.form.fields.booleanfield.AbstractBooleanField;
+import org.eclipse.scout.rt.client.ui.form.fields.button.AbstractButton;
 import org.eclipse.scout.rt.client.ui.form.fields.groupbox.AbstractGroupBox;
 import org.eclipse.scout.rt.client.ui.form.fields.htmlfield.AbstractHtmlField;
 import org.eclipse.scout.rt.platform.Order;
@@ -17,6 +18,7 @@ import org.eclipse.scout.widgets.client.services.lookup.DisplayViewIdLookupCall.
 import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.GrowField;
 import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.HeaderField;
 import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.InitialSizeField;
+import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.MyButton;
 import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.RelativeField;
 import org.eclipse.scout.widgets.client.ui.desktop.pages.bench.AbstractConfigureBenchLayoutForm.MainBox.ShrinkField;
 
@@ -66,6 +68,10 @@ public abstract class AbstractConfigureBenchLayoutForm<T extends FlexboxLayoutDa
 
   public AbstractConfigureBenchLayoutForm<?>.MainBox.GrowField getGrowField() {
     return getFieldByClass(GrowField.class);
+  }
+
+  public AbstractConfigureBenchLayoutForm<?>.MainBox.MyButton getMyButton() {
+    return getFieldByClass(MyButton.class);
   }
 
   public AbstractConfigureBenchLayoutForm<?>.MainBox.RelativeField getRelativeField() {
@@ -266,5 +272,21 @@ public abstract class AbstractConfigureBenchLayoutForm<T extends FlexboxLayoutDa
       }
     }
 
+    @Order(6000)
+    @ClassId("19477719-a1aa-48f2-815d-efe372f6285a")
+    public class MyButton extends AbstractButton {
+      @Override
+      protected String getConfiguredLabel() {
+        return "The button";
+      }
+
+      @Override
+      protected void execClickAction() {
+        onButtonClick();
+      }
+    }
+  }
+
+  public void onButtonClick() {
   }
 }
